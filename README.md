@@ -2,10 +2,7 @@
 This repository contains various recipes for using DI (Dependency
 Injection in your classes) to insert certain functionality.
 
-- [layout.md](Layout)
-- [urls.md](URLs)
-
-## Usage
+## Basic usage
 Within a Magento 2 class, you can use DI via the constructor to inject
 yourself with the dependencies that you need. For any of these classes
 counts that if the parent class already has such a dependency injected, that you should use that injected
@@ -70,3 +67,10 @@ class Example
     }
 }
 ```
+
+## DI recipiees
+See each file for more examples:
+- [registry.md](Registry)
+- [layout.md](Layout)
+- [urls.md](URLs)
+
