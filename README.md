@@ -15,7 +15,8 @@ what you need.
 If there is no such dependency yet, you can inject such a dependency as follows:
 
 ## Block class with template
-For a Block class with template functionality, the default constructor looks as follows:
+For a Block class with template functionality, the default constructor looks as follows (or it might have
+been left-out because it only forwards functionality to its parent constructor):
 ```php
 class Example extends \Magento\Framework\View\Element\Template
 {
@@ -50,7 +51,8 @@ A generic class (like a cronjob class, an observer, or anything else) might have
 ```php
 class Example
 {
-    public function __construct() {
+    public function __construct()
+    {
     }
 }
 ```
