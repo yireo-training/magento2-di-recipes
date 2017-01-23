@@ -70,7 +70,7 @@ class Example
 
 ## DI recipiees
 See each file for more examples:
-- [registry.md](Registry)
-- [layout.md](Layout)
-- [urls.md](URLs)
+- [Registry](registry.md)
+- [Layout](layout.md)
+- [Urls](urls.md)
 
