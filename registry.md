@@ -40,6 +40,7 @@ class Example implements Magento\Framework\Event\ObserverInterface
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
         // Handling some event
+        return $this->registry->register('something', $observer->getEvent()->getSomething());
     }
 }
 ```
