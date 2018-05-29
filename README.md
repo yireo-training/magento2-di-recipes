@@ -34,7 +34,7 @@ class Example extends \Magento\Framework\View\Element\Template
 
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
-        \Yireo\Foo\Bar $foobar
+        \Yireo\Foo\Bar $foobar,
         array $data = []
     ) {
         $this->foobar = $foobar;
