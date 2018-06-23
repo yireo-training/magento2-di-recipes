@@ -21,7 +21,7 @@ To work with the registry, you would inject yourself with an instance of `\Magen
 
 - `Yireo\DiRecipes\ViewModel\Registry`
 
-# Working with the layout
+## Working with the layout
 Within Block classes, the `$context` variable is used to insert an instance of the layout in the variable `$this->_layout`,
 which can also be fetched using `$this->getLayout()`. Alternatively, if you are in an observer or alike, instantiate
 yourself with `\Magento\Framework\View\LayoutFactory`.
@@ -29,5 +29,8 @@ yourself with `\Magento\Framework\View\LayoutFactory`.
 - `Yireo\DiRecipes\Block\LayoutExample`
 - `Yireo\DiRecipes\Observer\LayoutExample`
 
-# Working with URLs
+## Working with URLs
 To inject URLs, you could inject `\Magento\Framework\UrlInterface`. However, it is much safer to get clean instances by injecting `\Magento\Framework\UrlFactory` instead. The current URL could be fetched using `\Magento\Store\Model\StoreManagerInterface`.
+
+- `Yireo\DiRecipes\ViewModel\UrlExample`
+- `Yireo\DiRecipes\ViewModel\StoreManagerExample`
