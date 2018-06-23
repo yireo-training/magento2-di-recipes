@@ -16,68 +16,18 @@ counts that if the parent class already has such a dependency injected, that you
 dependency instead. For instance, if the parent offers a `$context` variable, inspect it to see if it offers
 what you need.
 
-If there is no such dependency yet, you can inject such a dependency as follows:
+## Working with the registry
+To work with the registry, you would inject yourself with an instance of `\Magento\Framework\Registry`.
 
-## Block class with template
-For a Block class with template functionality, the default constructor looks as follows (or it might have
-been left-out because it only forwards functionality to its parent constructor):
-```php
-class Example extends \Magento\Framework\View\Element\Template
-{
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        array $data = []
-    ) {
-        parent::__construct($context, $data);
-    }
-}
-```
+- `Yireo\DiRecipes\ViewModel\Registry`
 
-A new dependency with `Yireo\Foo\Bar` would look like this:
-```php
-class Example extends \Magento\Framework\View\Element\Template
-{
-    protected $foobar;
+# Working with the layout
+Within Block classes, the `$context` variable is used to insert an instance of the layout in the variable `$this->_layout`,
+which can also be fetched using `$this->getLayout()`. Alternatively, if you are in an observer or alike, instantiate
+yourself with `\Magento\Framework\View\LayoutFactory`.
 
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Yireo\Foo\Bar $foobar,
-        array $data = []
-    ) {
-        $this->foobar = $foobar;
-        parent::__construct($context, $data);
-    }
-}
-```
+- `Yireo\DiRecipes\Block\LayoutExample`
+- `Yireo\DiRecipes\Observer\LayoutExample`
 
-## Generic class with no parent
-A generic class (like a cronjob class, an observer, or anything else) might have an empty constructor:
-```php
-class Example
-{
-    public function __construct()
-    {
-    }
-}
-```
-
-A new dependency with `Yireo\Foo\Bar` would look like this:
-```php
-class Example
-{
-    protected $foobar;
-
-    public function __construct(
-        \Yireo\Foo\Bar $foobar
-    ) {
-        $this->foobar = $foobar;
-    }
-}
-```
-
-## DI recipiees
-See each file for more examples:
-- [Registry](registry.md)
-- [Layout](layout.md)
-- [Urls](urls.md)
-
+# Working with URLs
+To inject URLs, you could inject `\Magento\Framework\UrlInterface`. However, it is much safer to get clean instances by injecting `\Magento\Framework\UrlFactory` instead. The current URL could be fetched using `\Magento\Store\Model\StoreManagerInterface`.

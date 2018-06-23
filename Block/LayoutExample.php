@@ -14,6 +14,14 @@ use Yireo\DiRecipes\Block\LayoutExample\Child;
 class LayoutExample extends Template
 {
     /**
+     * Magento constructor
+     */
+    public function _construct()
+    {
+        $this->addChildBlock();
+    }
+
+    /**
      * Some method
      */
     protected function addChildBlock()
