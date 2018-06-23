@@ -1,11 +1,12 @@
 # Magento 2 DI Recipes
-This repository contains various recipes for using DI (Dependency
-Injection in your classes) to insert certain functionality.
+This repository contains various recipes for using DI (Dependency Injection in your classes) to insert certain functionality.
+
+This is NOT a Magento extension. It simply contains code samples.
 
 ## Installation
 ```bash
 composer config repositories.yireo-training-di-examples vcs git@github.com:yireo-training/magento2-di-recipes.git
-composer require yireo-training/magento2-di-recipes
+composer require yireo-training/magento2-di-recipes:dev-master
 ```
 
 ## Basic usage
