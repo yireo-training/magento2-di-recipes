@@ -2,6 +2,12 @@
 This repository contains various recipes for using DI (Dependency
 Injection in your classes) to insert certain functionality.
 
+## Installation
+```bash
+composer config repositories.yireo-training-di-examples vcs git@github.com:yireo-training/magento2-di-recipes.git
+composer require yireo-training/magento2-di-recipes
+```
+
 ## Basic usage
 Within a Magento 2 class, you can use DI via the constructor to inject
 yourself with the dependencies that you need. For any of these classes
