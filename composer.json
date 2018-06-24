@@ -1,7 +1,6 @@
 {
   "name": "yireo-training/magento2-di-recipes",
   "license": "OSL-3.0",
-  "homepage": "",
   "description": "DI recipes for Magento 2",
   "keywords": [
     "composer-installer",
