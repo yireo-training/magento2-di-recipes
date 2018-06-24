@@ -18,20 +18,21 @@ use Zend\View\Helper\Layout;
 class LayoutExampleTest extends AbstractController
 {
     /**
-     * @expectedException \OutOfBoundsException
+     *
      */
     public function testChildBlockInParent()
     {
         $layout = $this->getLayout();
         $layout->getUpdate()->addHandle('default');
         $layout->getUpdate()->addPageHandles(['1column']);
-        
+
         $this->markTestIncomplete('This test should now throw an OutOfBoundsException');
 
+        /** @var LayoutExample $layoutExampleBlock */
         $layoutExampleBlock = $layout->addBlock(LayoutExample::class, 'example');
         $this->assertEquals(get_class($layoutExampleBlock), LayoutExample::class);
 
-        $childNames = $layoutExampleBlock->getChildNames();
+        $childNames = $layout->getChildNames($layoutExampleBlock->getNameInLayout());
         $this->assertContains('example', $childNames, var_export($childNames, true));
     }
 
@@ -41,7 +42,7 @@ class LayoutExampleTest extends AbstractController
     private function getLayout(): LayoutInterface
     {
         $this->dispatch('/');
-        return $this->getObjectManager()->create(LayoutInterface::class);
+        return $this->getObjectManager()->get(LayoutInterface::class);
     }
 
     /**
