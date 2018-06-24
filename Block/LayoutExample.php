@@ -18,6 +18,7 @@ class LayoutExample extends Template
      */
     public function _construct()
     {
+        parent::_construct();
         $this->addChildBlock();
     }
 
@@ -26,11 +27,14 @@ class LayoutExample extends Template
      */
     protected function addChildBlock()
     {
-        $data = [];
-        $this->_layout->addChild(
-            'my_example_child',
-            Child::class,
-            $data
-        );
+        $data = ['foo' => 'bar'];
+
+        /** @var Child $childBlock */
+        $thisName = $this->getNameInLayout();
+        $childName = $thisName . '.child';
+        $childBlock = $this->_layout->addBlock(Child::class, $childName);
+        $childBlock->setData($data);
+
+        $this->setChild('child', $childBlock);
     }
 }

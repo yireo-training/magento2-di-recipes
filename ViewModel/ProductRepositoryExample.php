@@ -45,7 +45,7 @@ class ProductRepositoryExample
     public function getProducts(): array
     {
         $searchCriteriaBuilder = $this->searchCriteriaBuilderFactory->create();
-        $searchCriteriaBuilder->addFilter('name', 'hood%', 'like');
+        $searchCriteriaBuilder->addFilter('name', 'si%', 'like');
         $searchCriteriaBuilder->setPageSize(3);
 
         $searchCriteria = $searchCriteriaBuilder->create();

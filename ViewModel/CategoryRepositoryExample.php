@@ -6,6 +6,7 @@ namespace Yireo\DiRecipes\ViewModel;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
 use Magento\Catalog\Api\Data\CategoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilderFactory;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Registry;
 
 /**
@@ -56,7 +57,15 @@ class CategoryRepositoryExample
     {
         /** @var CategoryInterface $currentCategory */
         $currentCategory = $this->registry->registry('category');
+        if (empty($currentCategory)) {
+            throw new NoSuchEntityException(__('No category loaded into registry'));
+        }
+
         $subCategoryIds = $currentCategory->getChildren();
+        if (!empty($subCategoryIds) && is_string($subCategoryIds)) {
+            $subCategoryIds = explode(',', $subCategoryIds);
+        }
+
         $subCategories = [];
 
         foreach ($subCategoryIds as $subCategoryId) {

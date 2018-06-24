@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Yireo\DiRecipes\ViewModel;
 
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Registry;
 
 class RegistryExample
@@ -24,9 +25,16 @@ class RegistryExample
 
     /**
      * @return ProductInterface
+     * @throws NoSuchEntityException
      */
     public function getCurrentProduct(): ProductInterface
     {
-        return $this->registry->registry('product');
+        $product = $this->registry->registry('product');
+
+        if (!$product instanceof ProductInterface) {
+            throw new NoSuchEntityException(__('No product in registry'));
+        }
+
+        return $product;
     }
 }
