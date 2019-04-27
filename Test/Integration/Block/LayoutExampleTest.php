@@ -22,11 +22,11 @@ class LayoutExampleTest extends AbstractController
      */
     public function testChildBlockInParent()
     {
+        $this->markTestSkipped('This test is not part of a real-life module ');
+
         $layout = $this->getLayout();
         $layout->getUpdate()->addHandle('default');
         $layout->getUpdate()->addPageHandles(['1column']);
-
-        $this->markTestIncomplete('This test should now throw an OutOfBoundsException');
 
         /** @var LayoutExample $layoutExampleBlock */
         $layoutExampleBlock = $layout->addBlock(LayoutExample::class, 'example');
@@ -41,7 +41,6 @@ class LayoutExampleTest extends AbstractController
      */
     private function getLayout(): LayoutInterface
     {
-        $this->dispatch('/');
         return $this->getObjectManager()->get(LayoutInterface::class);
     }
 
